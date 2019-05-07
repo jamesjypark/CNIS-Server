@@ -17,7 +17,7 @@ module.exports = app => {
     "CREATE TABLE IF NOT EXISTS CoexistingConditions (patientId TEXT NOT NULL, coexstingConditions TEXT NOT NULL, PRIMARY KEY(patientId, coexstingConditions))"
   );
   db.run(
-    "CREATE TABLE IF NOT EXISTS PreEclampsiaList (patientId TEXT NOT NULL, preEclampsia TEXT NOT NULL, PRIMARY KEY(patientId, preEclampsia))"
+    "CREATE TABLE IF NOT EXISTS PreEclampsia (patientId TEXT NOT NULL, preEclampsia TEXT NOT NULL, PRIMARY KEY(patientId, preEclampsia))"
   );
 
   // POST request received from CNIS mobile app
