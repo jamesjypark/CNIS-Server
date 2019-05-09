@@ -14,7 +14,7 @@ module.exports = app => {
     "CREATE TABLE IF NOT EXISTS MedicalHistory (patientId TEXT NOT NULL, medicalHistory TEXT NOT NULL, PRIMARY KEY (patientId, medicalHistory))"
   );
   db.run(
-    "CREATE TABLE IF NOT EXISTS CoexistingConditions (patientId TEXT NOT NULL, coexstingConditions TEXT NOT NULL, PRIMARY KEY(patientId, coexstingConditions))"
+    "CREATE TABLE IF NOT EXISTS CoexistingConditions (patientId TEXT NOT NULL, coexistingConditions TEXT NOT NULL, PRIMARY KEY(patientId, coexistingConditions))"
   );
   db.run(
     "CREATE TABLE IF NOT EXISTS PreEclampsia (patientId TEXT NOT NULL, preEclampsia TEXT NOT NULL, PRIMARY KEY(patientId, preEclampsia))"
@@ -53,7 +53,7 @@ module.exports = app => {
       });
       if (coexistingConditionsList) {
         coexistingConditionsList.forEach(coexistingConditions => {
-          const coexsitingConditionsQuery = `INSERT OR REPLACE INTO CoexistingConditions (patientId, coexstingConditions) VALUES ('${patientId}', '${coexistingConditions}')`;
+          const coexsitingConditionsQuery = `INSERT OR REPLACE INTO CoexistingConditions (patientId, coexistingConditions) VALUES ('${patientId}', '${coexistingConditions}')`;
           db.run(coexsitingConditionsQuery, err => {
             if (err) {
               console.log(`error occurred from coexistingConditions: ${err}`);
@@ -106,30 +106,4 @@ module.exports = app => {
       res.end();
     });
   });
-
-  // app.get("/server.js/CoexistingConditions", cors(), (req, res) => {
-  //   db.all(`SELECT * FROM CoexistingConditions`, (err, rows) => {
-  //     if (err) {
-  //       res.status(204);
-  //       console.log("error occurred writing coexisting conditions");
-  //     } else {
-  //       res.header("Content-Type", "application/json");
-  //       res.status(200).send(rows);
-  //     }
-  //     res.end();
-  //   });
-  // });
-
-  // app.get("/server.js/PreEclampsia", cors(), (req, res) => {
-  //   db.all(`SELECT * FROM PreEclampsia`, (err, rows) => {
-  //     if (err) {
-  //       res.status(204);
-  //       console.log("error occurred writing coexisting conditions");
-  //     } else {
-  //       res.header("Content-Type", "application/json");
-  //       res.status(200).send(rows);
-  //     }
-  //     res.end();
-  //   });
-  // });
 };
