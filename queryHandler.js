@@ -20,6 +20,7 @@ module.exports = app => {
     "CREATE TABLE IF NOT EXISTS PreEclampsia (patientId TEXT NOT NULL, preEclampsia TEXT NOT NULL, PRIMARY KEY(patientId, preEclampsia))"
   );
 
+  app.use(cors());
   // POST request received from CNIS mobile app
   app.post("/server.js", cors(), (req, res) => {
     const receivedObject = JSON.parse(req.body).testString;
